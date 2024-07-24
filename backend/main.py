@@ -54,6 +54,10 @@ def create_post_for_account(
 ):
     return crud.create_post(db=db, post=post, account_id=account_id)
 
+@app.post("/blog/{blog_id}/posts/", response_model=schemas.Post)
+def create_post(blog_id: int, post: schemas.PostCreate, db: Session = Depends(get_db)):
+    return crud.create_post(db=db, post=post)
+
 
 @app.get("/blogs/", response_model=list[schemas.Blog])
 def read_blogs(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):

@@ -7,7 +7,7 @@ from .database import Base
 class Account(Base):
     __tablename__ = "accounts"
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True, index=True)
     email = Column(String, unique=True, index=True)
     hashed_password = Column(String)
 
@@ -18,7 +18,7 @@ class Account(Base):
 class Blog(Base):
     __tablename__ = "blogs"
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True, index=True)
     title = Column(String, index=True)
     content = Column(String)
     account_id = Column(Integer, ForeignKey("accounts.id"))
@@ -29,7 +29,7 @@ class Blog(Base):
 class Post(Base):
     __tablename__ = "posts"
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     content = Column(String)
     account_id = Column(Integer, ForeignKey("accounts.id"))
     blog_id = Column(Integer, ForeignKey("blogs.id") )
