@@ -16,7 +16,6 @@ function BlogDetail(){
     const getBlog = async(blog_id: number) => {
         try{
             const blogResponse = await axios.get(BLOG_URL + blog_id)
-            alert(blogResponse.data)
             setBlog(blogResponse.data)
         } catch(err) {
             setError(`Error retrieving blog: ${err}`);

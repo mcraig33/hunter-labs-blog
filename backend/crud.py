@@ -32,7 +32,7 @@ def get_blog(db: Session, blog_id: int):
 
 
 def get_posts(db: Session, blog_id: int, skip: int = 0, limit: int = 100):
-    return db.query(models.Blog).filter(models.Post.blog_id == blog_id).offset(skip).limit(limit).all()
+    return db.query(models.Post).filter(models.Post.blog_id == blog_id).offset(skip).limit(limit).all()
 
 
 def create_post(db: Session, post: schemas.Post, account_id: int, blog_id: int):

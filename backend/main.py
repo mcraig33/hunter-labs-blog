@@ -65,7 +65,7 @@ def read_blog(blog_id = int, db: Session = Depends(get_db)):
     blog = crud.get_blog(db, blog_id = blog_id)
     return blog
 
-@app.get("posts/{blog_id}", response_model=list[schemas.Post])
+@app.get("/posts/{blog_id}", response_model=list[schemas.Post])
 def read_posts(blog_id: int, skip: int=0, limit: int=100, db: Session = Depends(get_db)):
     posts = crud.get_posts(db, blog_id==blog_id, skip = skip, limit=limit)
     return posts
