@@ -27,6 +27,9 @@ def create_account(db: Session, account: schemas.AccountCreate):
 def get_blogs(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Blog).offset(skip).limit(limit).all()
 
+def get_blog(db: Session, blog_id: int):
+    return db.query(models.Blog).filter(models.Blog.id == blog_id).first()
+
 
 def get_posts(db: Session, blog_id: int, skip: int = 0, limit: int = 100):
     return db.query(models.Blog).filter(models.Post.blog_id == blog_id).offset(skip).limit(limit).all()
